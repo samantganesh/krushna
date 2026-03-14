@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { UntitledOil2024 } from './features/artwork';
 import { PortfolioLayout, type NavItem } from './features/core/nav';
 import { ThemeProvider } from './features/core/theme';
 import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
@@ -21,6 +22,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/artwork/untitled-oil-2024" element={<UntitledOil2024 />} />
       </Routes>
     </PortfolioLayout>
   );
