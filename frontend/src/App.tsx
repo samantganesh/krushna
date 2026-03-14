@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PortfolioLayout, type NavItem } from './features/core/nav';
 import { ThemeProvider } from './features/core/theme';
 import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
+import { GalleryPage } from './features/gallery';
 import { HomePage } from './features/home';
 
 const NAV_ITEMS: NavItem[] = [
@@ -19,6 +20,7 @@ function AppContent() {
     <PortfolioLayout navItems={NAV_ITEMS} navRightContent={<ThemeSwitcher />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
       </Routes>
     </PortfolioLayout>
   );
