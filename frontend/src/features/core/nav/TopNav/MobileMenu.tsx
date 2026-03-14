@@ -2,8 +2,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Dialog, IconButton, Stack, Typography } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
-import { FONT_DISPLAY } from '../constants';
-import type { NavItem } from '../types';
+import { FONT_DISPLAY, FONT_WEIGHT_BOLD, FONT_WEIGHT_NORMAL } from '../constants';
+import  { type NavItem } from '../types';
 
 interface MobileMenuProps {
   open: boolean;
@@ -19,13 +19,15 @@ export function MobileMenu({ open, onClose, items }: MobileMenuProps) {
       fullScreen
       open={open}
       onClose={onClose}
-      PaperProps={{
-        sx: {
-          bgcolor: 'primary.main',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+      slotProps={{
+        paper: {
+          sx: {
+            bgcolor: 'primary.main',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
         },
       }}
     >
@@ -48,7 +50,7 @@ export function MobileMenu({ open, onClose, items }: MobileMenuProps) {
               color: 'white',
               textDecoration: 'none',
               fontFamily: FONT_DISPLAY,
-              fontWeight: pathname === item.to ? 700 : 400,
+              fontWeight: pathname === item.to ? FONT_WEIGHT_BOLD : FONT_WEIGHT_NORMAL,
               '&:hover': { textDecoration: 'underline' },
             }}
           >

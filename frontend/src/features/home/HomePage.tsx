@@ -1,9 +1,13 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+
+import { HeroSection } from './HeroSection';
+import { TeaserGrid } from './TeaserGrid';
 
 export function HomePage() {
   return (
-    <Box sx={{ p: 4 }}>
-      <Typography variant="h2">Home</Typography>
+    <Box>
+      <HeroSection />
+      <TeaserGrid />
     </Box>
   );
 }

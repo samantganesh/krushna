@@ -3,10 +3,12 @@ import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { useState, type ReactNode } from 'react';
 
 import { NAV_HEIGHT } from '../constants';
-import type { NavItem } from '../types';
+import  { type NavItem } from '../types';
+
 import { MobileMenu } from './MobileMenu';
 import { NavDesktopLinks } from './NavDesktopLinks';
 import { NavLogo } from './NavLogo';
+
 
 interface TopNavProps {
   items: NavItem[];

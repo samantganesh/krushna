@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
-import { FONT_DISPLAY } from '../constants';
-import type { NavItem } from '../types';
+import { FONT_DISPLAY, FONT_WEIGHT_BOLD, FONT_WEIGHT_NORMAL } from '../constants';
+import  { type NavItem } from '../types';
 
 interface NavDesktopLinksProps {
   items: NavItem[];
@@ -23,7 +23,7 @@ export function NavDesktopLinks({ items }: NavDesktopLinksProps) {
             sx={{
               color: 'text.primary',
               fontFamily: FONT_DISPLAY,
-              fontWeight: isActive ? 700 : 400,
+              fontWeight: isActive ? FONT_WEIGHT_BOLD : FONT_WEIGHT_NORMAL,
               borderBottom: '2px solid',
               borderColor: isActive ? 'primary.main' : 'transparent',
               borderRadius: 0,
