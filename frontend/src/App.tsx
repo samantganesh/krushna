@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { AboutPage } from './features/about';
-import { UntitledOil2024 } from './features/artwork';
+import { ClayForm2023, FigureCharcoal2024, ShortFilm2023, UntitledOil2024 } from './features/artwork';
 import { ContactPage } from './features/contact';
 import { PortfolioLayout, type NavItem } from './features/core/nav';
 import { ThemeProvider } from './features/core/theme';
@@ -30,6 +30,9 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/artwork/untitled-oil-2024" element={<UntitledOil2024 />} />
+        <Route path="/artwork/figure-charcoal-2024" element={<FigureCharcoal2024 />} />
+        <Route path="/artwork/short-film-2023" element={<ShortFilm2023 />} />
+        <Route path="/artwork/clay-form-2023" element={<ClayForm2023 />} />
         <Route path="/writing" element={<WritingIndexPage />} />
         <Route path="/writing/on-social-justice-2025" element={<OnSocialJustice2025 />} />
         <Route path="/writing/a-short-thought-2025" element={<AShortThought2025 />} />
