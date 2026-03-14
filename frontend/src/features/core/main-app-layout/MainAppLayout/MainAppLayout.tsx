@@ -8,6 +8,19 @@ import { Topbar } from '../Topbar';
 import { LayoutConfigContext } from './layoutConfigContext';
 import { LayoutConfigProvider } from './LayoutContext';
 
+function buildRightContent(
+  topbarRightContent: React.ReactNode,
+  profileMenuContent: React.ReactNode,
+  showProfileMenu: boolean,
+): React.ReactNode {
+  return (
+    <>
+      {topbarRightContent}
+      {showProfileMenu ? <ProfileMenu>{profileMenuContent}</ProfileMenu> : null}
+    </>
+  );
+}
+
 export interface MainAppLayoutProps {
   /**
    * Optional logo or brand element to display in the topbar
@@ -75,14 +88,7 @@ const MainAppLayoutInner: React.FC<MainAppLayoutProps> = ({
         <Topbar
           onMenuClick={handleMenuClick}
           logo={logo}
-          rightContent={
-            <>
-              {topbarRightContent}
-              {showProfileMenu ? (
-                <ProfileMenu>{profileMenuContent}</ProfileMenu>
-              ) : null}
-            </>
-          }
+          rightContent={buildRightContent(topbarRightContent, profileMenuContent, showProfileMenu)}
         />
       ) : null}
 

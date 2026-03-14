@@ -2,15 +2,44 @@ import {
   ThemeProvider as MuiThemeProvider,
   createTheme,
   CssBaseline,
+  type Theme,
 } from '@mui/material';
 import { useState, useEffect, type ReactNode } from 'react';
 
+import { PALETTE } from './palette';
 import {
   ThemeContext,
   THEME_STORAGE_KEY,
   getInitialTheme,
   type ThemeMode,
 } from './themeContext';
+
+const FONT_DISPLAY = '"Space Grotesk", sans-serif';
+const FONT_BODY = '"Inter", system-ui, sans-serif';
+
+function buildTheme(mode: ThemeMode): Theme {
+  return createTheme({
+    palette: {
+      mode,
+      primary: { main: PALETTE.primary },
+      secondary: { main: PALETTE.secondary },
+      warning: { main: PALETTE.accent },
+      background: {
+        default: mode === 'light' ? PALETTE.bgLight : PALETTE.bgDark,
+        paper: mode === 'light' ? PALETTE.paperLight : PALETTE.paperDark,
+      },
+    },
+    typography: {
+      fontFamily: FONT_BODY,
+      h1: { fontFamily: FONT_DISPLAY, fontWeight: 700 },
+      h2: { fontFamily: FONT_DISPLAY, fontWeight: 700 },
+      h3: { fontFamily: FONT_DISPLAY, fontWeight: 600 },
+      h4: { fontFamily: FONT_DISPLAY, fontWeight: 600 },
+      h5: { fontFamily: FONT_DISPLAY, fontWeight: 600 },
+      h6: { fontFamily: FONT_DISPLAY, fontWeight: 600 },
+    },
+  });
+}
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -23,7 +52,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     try {
       localStorage.setItem(THEME_STORAGE_KEY, mode);
     } catch {
-      // localStorage unavailable, continue silently
+      // localStorage unavailable
     }
   }, [mode]);
 
@@ -31,15 +60,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  const theme = createTheme({
-    palette: {
-      mode,
-    },
-  });
-
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={buildTheme(mode)}>
         <CssBaseline />
         {children}
       </MuiThemeProvider>
