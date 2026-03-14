@@ -6,6 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is Krushna's personal website — a portfolio for a Contemporary Arts (BA Year 3) student. The goal is to showcase artwork and creative work. Code quality standards are high (maintained by a software developer parent). Formal testing and unit tests are not required.
 
+## Git Workflow
+
+Branch → make changes → get approval → merge into main locally → push. No pull requests.
+
+```bash
+git checkout -b <branch-name>   # branch off main
+# ... make changes, commit ...
+git checkout main
+git merge <branch-name>
+git branch -d <branch-name>
+git push origin main
+git push origin --delete <branch-name>
+```
+
 ## Development Commands
 
 All commands run from `frontend/`:

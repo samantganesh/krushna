@@ -14,7 +14,7 @@ import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
 function AppContent() {
   return (
     <MainAppLayout
-      logo={<AppTitle title="Achaeans Realm" />}
+      logo={<AppTitle title="Krushna" />}
       topbarRightContent={<ThemeSwitcher />}
       navigationItems={
         <List>

@@ -326,4 +326,4 @@ test('provides theme context', () => {
 
 ## License
 
-This component is part of the Achaeans project and follows the project's license.
+This component is part of the Krushna project and follows the project's license.

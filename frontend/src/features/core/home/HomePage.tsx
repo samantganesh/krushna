@@ -17,7 +17,7 @@ export function HomePage() {
         Hello
       </Typography>
       <Typography variant="body1" color="text.secondary">
-        Welcome to Achaeans Realm
+        Welcome to Krushna
       </Typography>
     </Box>
   );
