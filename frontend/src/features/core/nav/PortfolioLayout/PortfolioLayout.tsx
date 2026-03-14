@@ -13,7 +13,7 @@ interface PortfolioLayoutProps {
 
 export function PortfolioLayout({ children, navItems, navRightContent }: PortfolioLayoutProps) {
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', flexDirection: 'column' }}>
       <TopNav items={navItems} rightContent={navRightContent} />
       <Box component="main" sx={{ mt: `${String(NAV_HEIGHT)}px` }}>
         {children}
