@@ -1,11 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { AboutPage } from './features/about';
 import { UntitledOil2024 } from './features/artwork';
+import { ContactPage } from './features/contact';
 import { PortfolioLayout, type NavItem } from './features/core/nav';
 import { ThemeProvider } from './features/core/theme';
 import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
 import { GalleryPage } from './features/gallery';
+import { HobbiesPage } from './features/hobbies';
 import { HomePage } from './features/home';
+import { NotFoundPage } from './features/not-found';
+import { WritingIndexPage } from './features/writing';
+import { AShortThought2025 } from './features/writing/entries/AShortThought2025';
+import { OnSocialJustice2025 } from './features/writing/entries/OnSocialJustice2025';
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', to: '/' },
@@ -23,6 +30,13 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/artwork/untitled-oil-2024" element={<UntitledOil2024 />} />
+        <Route path="/writing" element={<WritingIndexPage />} />
+        <Route path="/writing/on-social-justice-2025" element={<OnSocialJustice2025 />} />
+        <Route path="/writing/a-short-thought-2025" element={<AShortThought2025 />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/hobbies" element={<HobbiesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </PortfolioLayout>
   );
