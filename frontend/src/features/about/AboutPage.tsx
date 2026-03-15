@@ -21,13 +21,13 @@ export function AboutPage() {
   return (
     <Box sx={{ px: { xs: 2, md: 8 }, py: 4, maxWidth: 900 }}>
       <Typography variant="h2" sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_BOLD, mb: 2 }}>
-        About
+        About Me
       </Typography>
       <Divider sx={{ borderColor: 'primary.main', borderBottomWidth: 3, width: DIVIDER_WIDTH, mb: 4 }} />
 
       <Typography variant="body1" sx={{ fontSize: '1.125rem', lineHeight: 1.9, mb: 8, maxWidth: 640 }}>
-        Krushna is a Contemporary Arts student in Year 3, working across painting, drawing,
-        film, sculpture, and performance. Her practice is concerned with [themes — add here].
+        I am a Contemporary Arts student in Year 3, working across painting, drawing,
+        film, sculpture, and performance.
       </Typography>
 
       <Typography variant="h5" sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_SEMIBOLD, mb: 2 }}>
@@ -35,7 +35,7 @@ export function AboutPage() {
       </Typography>
       <StatLine label="Degree" value="BA Contemporary Arts" />
       <StatLine label="Year" value="Year 3" />
-      <StatLine label="University" value="[University name]" />
+      <StatLine label="University" value="Srishti Manipal Institute, Bengaluru, India" />
     </Box>
   );
 }
