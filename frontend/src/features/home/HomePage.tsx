@@ -3,11 +3,6 @@ import { Box, Typography } from '@mui/material';
 const PHOTO_SRC = 'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings/field.jpeg';
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const NAV_HEIGHT = '56px';
-const DARK_BG = '#0D0D0D';
-const GRADIENT_OVERLAY_DESKTOP =
-  'linear-gradient(to right, rgba(13,13,13,0.60) 0%, rgba(13,13,13,0.20) 55%, rgba(13,13,13,0.0) 100%)';
-const GRADIENT_OVERLAY_MOBILE =
-  'linear-gradient(to top, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.0) 100%)';
 
 function HeroText() {
   return (
@@ -15,39 +10,40 @@ function HeroText() {
       sx={{
         position: 'relative',
         zIndex: 1,
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
         px: { xs: 3, md: 8 },
-        pb: 6,
+        pt: 6,
       }}
     >
       <Typography
         variant="h1"
-        sx={{
+        sx={(theme) => ({
           fontFamily: FONT_DISPLAY,
           fontWeight: 700,
-          fontSize: { xs: '14vw', md: '9vw' },
+          fontSize: { xs: '7vw', md: '4.5vw' },
           lineHeight: 1,
           letterSpacing: '-0.04em',
-          color: 'white',
+          color: theme.palette.mode === 'dark' ? 'white' : 'text.primary',
           mb: 2,
-        }}
+        })}
       >
-        Krushna
+        Welcome. Come see what I&apos;ve been making.
       </Typography>
       <Typography
-        sx={{
+        sx={(theme) => ({
           fontFamily: FONT_DISPLAY,
           fontSize: '0.78rem',
           fontWeight: 500,
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.55)',
-        }}
+          color:
+            theme.palette.mode === 'dark'
+              ? 'rgba(255,255,255,0.55)'
+              : 'rgba(0,0,0,0.55)',
+        })}
       >
         Contemporary Arts · BA Year 3
+        <br />
+        Srishti Manipal Institute, Bengaluru, India
       </Typography>
     </Box>
   );
@@ -63,16 +59,25 @@ function ImmersiveHero() {
         backgroundSize: { xs: 'contain', md: '100% auto' },
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
-        bgcolor: DARK_BG,
+        bgcolor: 'background.default',
         minHeight: { xs: '126vw', md: '70vh' },
       }}
     >
       <Box
-        sx={{
+        sx={(theme) => ({
           position: 'absolute',
           inset: 0,
-          background: { xs: GRADIENT_OVERLAY_MOBILE, md: GRADIENT_OVERLAY_DESKTOP },
-        }}
+          background: {
+            xs:
+              theme.palette.mode === 'dark'
+                ? 'linear-gradient(to top, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.0) 100%)'
+                : 'linear-gradient(to top, rgba(240,240,240,0.55) 0%, rgba(240,240,240,0.1) 40%, rgba(240,240,240,0.0) 100%)',
+            md:
+              theme.palette.mode === 'dark'
+                ? 'linear-gradient(to right, rgba(13,13,13,0.60) 0%, rgba(13,13,13,0.20) 55%, rgba(13,13,13,0.0) 100%)'
+                : 'linear-gradient(to right, rgba(240,240,240,0.60) 0%, rgba(240,240,240,0.20) 55%, rgba(240,240,240,0.0) 100%)',
+          },
+        })}
       />
       <HeroText />
     </Box>
