@@ -5,7 +5,7 @@ import { AboutPage } from './features/about';
 // import { ContactPage } from './features/contact';
 import { PortfolioLayout, type NavItem } from './features/core/nav';
 import { ThemeProvider } from './features/core/theme';
-import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
+// import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
 // import { GalleryPage } from './features/gallery';
 // import { HobbiesPage } from './features/hobbies';
 import { HomePage } from './features/home';
@@ -27,7 +27,7 @@ const NAV_ITEMS: NavItem[] = [
 
 function AppContent() {
   return (
-    <PortfolioLayout navItems={NAV_ITEMS} navRightContent={<ThemeSwitcher />}>
+    <PortfolioLayout navItems={NAV_ITEMS} navRightContent={null}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/gallery" element={<GalleryPage />} /> */}

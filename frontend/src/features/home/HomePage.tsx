@@ -57,7 +57,7 @@ function ImmersiveHero() {
         position: 'relative',
         backgroundImage: `url(${PHOTO_SRC})`,
         backgroundSize: { xs: 'contain', md: '100% auto' },
-        backgroundPosition: 'center center',
+        backgroundPosition: { xs: 'bottom center', md: 'center center' },
         backgroundRepeat: 'no-repeat',
         bgcolor: 'background.default',
         minHeight: { xs: '126vw', md: '70vh' },
