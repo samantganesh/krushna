@@ -10,6 +10,7 @@ import { GalleryPage } from './features/gallery';
 import { HobbiesPage } from './features/hobbies';
 import { HomePage } from './features/home';
 import { NotFoundPage } from './features/not-found';
+import { PaintingsPage } from './features/paintings';
 import { WritingIndexPage } from './features/writing';
 import { AShortThought2025 } from './features/writing/entries/AShortThought2025';
 import { OnSocialJustice2025 } from './features/writing/entries/OnSocialJustice2025';
@@ -17,6 +18,7 @@ import { OnSocialJustice2025 } from './features/writing/entries/OnSocialJustice2
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Gallery', to: '/gallery' },
+  { label: 'Paintings', to: '/paintings' },
   { label: 'Writing', to: '/writing' },
   { label: 'About', to: '/about' },
   { label: 'Hobbies', to: '/hobbies' },
@@ -29,6 +31,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/paintings" element={<PaintingsPage />} />
         <Route path="/artwork/untitled-oil-2024" element={<UntitledOil2024 />} />
         <Route path="/artwork/figure-charcoal-2024" element={<FigureCharcoal2024 />} />
         <Route path="/artwork/short-film-2023" element={<ShortFilm2023 />} />
