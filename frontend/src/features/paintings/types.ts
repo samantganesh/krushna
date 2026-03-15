@@ -6,5 +6,3 @@ export interface Painting {
   dimensions?: string;
   src: string;
 }
-
-export type LayoutVariant = 'A' | 'B' | 'C';
