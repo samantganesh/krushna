@@ -2,37 +2,38 @@ import { type Painting } from './types';
 
 const OIL_ON_CANVAS = 'Oil on canvas';
 
-// Update title, year, medium, and dimensions for each painting as needed.
-// The src paths match the filenames in public/images/paintings/.
-// Add dimensions as e.g. '80 × 60 cm' once you have the measurements.
+const CLOUDINARY_BASE = 'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings';
+
+// To add a new painting:
+// 1. Run: uv run --script scripts/upload_to_cloudinary.py paintings
+// 2. Add an entry below using the Cloudinary public_id as the src filename.
 export const PAINTINGS: Painting[] = [
   {
     id: 'let-the-parents-see',
     title: 'Let the Parents See',
     year: 2024,
     medium: OIL_ON_CANVAS,
-    src: '/images/paintings/let-the-parents-see.jpeg',
+    src: `${CLOUDINARY_BASE}/let-the-parents-see.jpg`,
   },
   {
     id: 'temperature',
     title: 'Temperature',
     year: 2024,
     medium: OIL_ON_CANVAS,
-    src: '/images/paintings/temperature.jpeg',
+    src: `${CLOUDINARY_BASE}/temperature.jpg`,
   },
   {
     id: 'the-sea',
     title: 'The Sea',
     year: 2024,
     medium: OIL_ON_CANVAS,
-    // Note: file is named the-sea-jpeg (no .jpeg extension) — rename if needed
-    src: '/images/paintings/the-sea-jpeg',
+    src: `${CLOUDINARY_BASE}/the-sea.jpg`,
   },
   {
     id: 'the-sun',
     title: 'The Sun',
     year: 2024,
     medium: OIL_ON_CANVAS,
-    src: '/images/paintings/the-sun.jpeg',
+    src: `${CLOUDINARY_BASE}/the-sun.jpg`,
   },
 ];
