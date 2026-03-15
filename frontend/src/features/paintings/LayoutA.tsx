@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 import { type Painting } from './types';
 
@@ -18,33 +18,48 @@ function PaintingCaption({ painting }: PaintingCaptionProps) {
     .join(' · ');
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        flexWrap: 'wrap',
-        gap: 1,
-        mt: 1.5,
-        mb: 8,
-      }}
-    >
-      <Typography
+    <>
+      <Box
         sx={{
-          fontFamily: FONT_SERIF,
-          fontStyle: 'italic',
-          fontSize: '1rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          flexWrap: 'wrap',
+          gap: 1,
+          mt: 1.5,
+          mb: painting.description ? 2 : 3,
         }}
       >
-        {painting.title}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ color: 'text.secondary', textAlign: 'right' }}
-      >
-        {meta}
-      </Typography>
-    </Box>
+        <Typography
+          sx={{
+            fontFamily: FONT_SERIF,
+            fontStyle: 'italic',
+            fontSize: '1rem',
+          }}
+        >
+          {painting.title}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: 'text.secondary', textAlign: 'right' }}
+        >
+          {meta}
+        </Typography>
+      </Box>
+      {painting.description ? (
+        <Box sx={{ mb: 3, maxWidth: 600 }}>
+          {painting.description.split('\n\n').map((para) => (
+            <Typography
+              key={para}
+              variant="body2"
+              sx={{ color: 'text.secondary', lineHeight: 1.7, mb: 1.5 }}
+            >
+              {para}
+            </Typography>
+          ))}
+        </Box>
+      ) : null}
+    </>
   );
 }
 
@@ -64,6 +79,7 @@ export function LayoutA({ paintings }: LayoutAProps) {
             sx={{ width: '100%', height: 'auto', display: 'block' }}
           />
           <PaintingCaption painting={p} />
+          <Divider sx={{ mb: 8, opacity: 1 }} />
         </Box>
       ))}
     </Box>

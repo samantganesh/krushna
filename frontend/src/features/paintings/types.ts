@@ -4,5 +4,6 @@ export interface Painting {
   year: number;
   medium: string;
   dimensions?: string;
+  description?: string;
   src: string;
 }
