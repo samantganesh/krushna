@@ -10,7 +10,6 @@ import { PALETTE } from './palette';
 import {
   ThemeContext,
   THEME_STORAGE_KEY,
-  getInitialTheme,
   type ThemeMode,
 } from './themeContext';
 
