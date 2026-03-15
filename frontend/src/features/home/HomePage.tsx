@@ -5,8 +5,10 @@ const PHOTO_SRC = '/images/field.jpeg';
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const NAV_HEIGHT = '56px';
 const DARK_BG = '#0D0D0D';
-const GRADIENT_OVERLAY =
-  'linear-gradient(to right, rgba(13,13,13,0.88) 0%, rgba(13,13,13,0.45) 65%, rgba(13,13,13,0.05) 100%)';
+const GRADIENT_OVERLAY_DESKTOP =
+  'linear-gradient(to right, rgba(13,13,13,0.60) 0%, rgba(13,13,13,0.20) 55%, rgba(13,13,13,0.0) 100%)';
+const GRADIENT_OVERLAY_MOBILE =
+  'linear-gradient(to top, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.0) 100%)';
 
 const NAV_LINKS = [
   { label: 'Gallery', to: '/gallery' },
@@ -58,18 +60,18 @@ function ImmersiveHero() {
         flex: 1,
         position: 'relative',
         backgroundImage: `url(${PHOTO_SRC})`,
-        backgroundSize: 'auto 100%',
-        backgroundPosition: 'center',
+        backgroundSize: { xs: 'contain', md: '100% auto' },
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
         bgcolor: DARK_BG,
-        minHeight: { xs: '60vw', md: '70vh' },
+        minHeight: { xs: '126vw', md: '70vh' },
       }}
     >
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
-          background: GRADIENT_OVERLAY,
+          background: { xs: GRADIENT_OVERLAY_MOBILE, md: GRADIENT_OVERLAY_DESKTOP },
         }}
       />
       <Box
