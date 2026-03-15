@@ -8,7 +8,7 @@ import { ThemeProvider } from './features/core/theme';
 import { ThemeSwitcher } from './features/core/theme/ThemeSwitcher';
 import { GalleryPage } from './features/gallery';
 import { HobbiesPage } from './features/hobbies';
-import { HomePage, HomePageB } from './features/home';
+import { HomePageB } from './features/home';
 import { NotFoundPage } from './features/not-found';
 import { WritingIndexPage } from './features/writing';
 import { AShortThought2025 } from './features/writing/entries/AShortThought2025';
@@ -27,8 +27,7 @@ function AppContent() {
   return (
     <PortfolioLayout navItems={NAV_ITEMS} navRightContent={<ThemeSwitcher />}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home-b" element={<HomePageB />} />
+        <Route path="/" element={<HomePageB />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/artwork/untitled-oil-2024" element={<UntitledOil2024 />} />
         <Route path="/artwork/figure-charcoal-2024" element={<FigureCharcoal2024 />} />
