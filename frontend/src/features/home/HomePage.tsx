@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const PHOTO_SRC = '/images/field.jpeg';
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
@@ -9,49 +8,6 @@ const GRADIENT_OVERLAY_DESKTOP =
   'linear-gradient(to right, rgba(13,13,13,0.60) 0%, rgba(13,13,13,0.20) 55%, rgba(13,13,13,0.0) 100%)';
 const GRADIENT_OVERLAY_MOBILE =
   'linear-gradient(to top, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.1) 40%, rgba(13,13,13,0.0) 100%)';
-
-const NAV_LINKS = [
-  { label: 'Gallery', to: '/gallery' },
-  { label: 'Writing', to: '/writing' },
-  { label: 'Hobbies', to: '/hobbies' },
-] as const;
-
-function ImmersiveNavStrip() {
-  return (
-    <Box
-      sx={{
-        bgcolor: DARK_BG,
-        px: { xs: 3, md: 8 },
-        py: 3,
-        display: 'flex',
-        gap: 6,
-        borderTop: '2px solid',
-        borderColor: 'primary.main',
-      }}
-    >
-      {NAV_LINKS.map(({ label, to }) => (
-        <Box
-          key={label}
-          component={Link}
-          to={to}
-          sx={{
-            fontFamily: FONT_DISPLAY,
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.5)',
-            textDecoration: 'none',
-            transition: 'color 0.2s ease',
-            '&:hover': { color: '#E63022' },
-          }}
-        >
-          {label}
-        </Box>
-      ))}
-    </Box>
-  );
-}
 
 function ImmersiveHero() {
   return (
@@ -127,7 +83,6 @@ export function HomePage() {
       }}
     >
       <ImmersiveHero />
-      <ImmersiveNavStrip />
     </Box>
   );
 }
