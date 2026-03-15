@@ -115,7 +115,7 @@ function ImmersiveHero() {
   );
 }
 
-export function HomePageB() {
+export function HomePage() {
   return (
     <Box
       sx={{
