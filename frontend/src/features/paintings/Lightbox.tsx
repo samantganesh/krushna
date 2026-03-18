@@ -4,6 +4,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 
 import { type Painting } from './types';
 
+const LIGHTBOX_Z_INDEX = 1300;
 const FONT_SERIF = '"Georgia", serif';
 const BACKDROP_OPACITY = 0.92;
 const IMG_MAX_HEIGHT = '82vh';
@@ -60,7 +61,7 @@ export function Lightbox({ paintings, activeIndex, onClose, onNavigate }: Lightb
       sx={{
         position: 'fixed',
         inset: 0,
-        zIndex: 1300,
+        zIndex: LIGHTBOX_Z_INDEX,
         bgcolor: `rgba(0,0,0,${BACKDROP_OPACITY})`,
         display: 'flex',
         flexDirection: 'column',
@@ -70,7 +71,7 @@ export function Lightbox({ paintings, activeIndex, onClose, onNavigate }: Lightb
     >
       {/* Close button */}
       <IconButton
-        onClick={onClose}
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
         aria-label="Close lightbox"
         sx={{ position: 'absolute', top: 16, right: 16, color: 'white' }}
       >
