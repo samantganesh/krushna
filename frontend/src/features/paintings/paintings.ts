@@ -1,6 +1,7 @@
 import { type Painting } from './types';
 
-const CLOUDINARY_BASE = 'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings';
+const CLOUDINARY_BASE =
+  'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings';
 const A4_LANDSCAPE = '23.4 x 33.1 Inches';
 
 // To add a new painting:
