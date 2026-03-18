@@ -104,6 +104,51 @@ function LightboxImageArea({ painting, onStopPropagation }: ImageAreaProps) {
   );
 }
 
+interface CloseButtonProps {
+  onClose: () => void;
+}
+
+function LightboxCloseButton({ onClose }: CloseButtonProps) {
+  return (
+    <IconButton
+      onClick={(e) => {
+        e.stopPropagation();
+        onClose();
+      }}
+      aria-label="Close lightbox"
+      sx={{ position: 'absolute', top: 16, right: 16, color: 'white' }}
+    >
+      ✕
+    </IconButton>
+  );
+}
+
+interface ArrowButtonProps {
+  direction: 'prev' | 'next';
+  onNavigate: () => void;
+}
+
+function LightboxArrowButton({ direction, onNavigate }: ArrowButtonProps) {
+  const isPrev = direction === 'prev';
+  return (
+    <IconButton
+      onClick={(e) => {
+        e.stopPropagation();
+        onNavigate();
+      }}
+      aria-label={isPrev ? 'Previous painting' : 'Next painting'}
+      sx={{
+        position: 'absolute',
+        [isPrev ? 'left' : 'right']: 16,
+        color: 'white',
+        fontSize: ARROW_FONT_SIZE,
+      }}
+    >
+      {isPrev ? '‹' : '›'}
+    </IconButton>
+  );
+}
+
 export function Lightbox({
   paintings,
   activeIndex,
@@ -140,50 +185,16 @@ export function Lightbox({
         justifyContent: 'center',
       }}
     >
-      <IconButton
-        onClick={(e) => {
-          e.stopPropagation();
-          onClose();
-        }}
-        aria-label="Close lightbox"
-        sx={{ position: 'absolute', top: 16, right: 16, color: 'white' }}
-      >
-        ✕
-      </IconButton>
-      <IconButton
-        onClick={(e) => {
-          e.stopPropagation();
-          handleNavigateBack();
-        }}
-        aria-label="Previous painting"
-        sx={{
-          position: 'absolute',
-          left: 16,
-          color: 'white',
-          fontSize: ARROW_FONT_SIZE,
-        }}
-      >
-        ‹
-      </IconButton>
+      <LightboxCloseButton onClose={onClose} />
+      <LightboxArrowButton direction="prev" onNavigate={handleNavigateBack} />
       <LightboxImageArea
         painting={painting}
         onStopPropagation={handleStopPropagation}
       />
-      <IconButton
-        onClick={(e) => {
-          e.stopPropagation();
-          handleNavigateForward();
-        }}
-        aria-label="Next painting"
-        sx={{
-          position: 'absolute',
-          right: 16,
-          color: 'white',
-          fontSize: ARROW_FONT_SIZE,
-        }}
-      >
-        ›
-      </IconButton>
+      <LightboxArrowButton
+        direction="next"
+        onNavigate={handleNavigateForward}
+      />
     </Box>
   );
 }
