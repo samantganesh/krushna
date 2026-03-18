@@ -29,7 +29,7 @@ function PaintingCaption({ painting }: PaintingCaptionProps) {
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           flexWrap: 'wrap',
           gap: 1,
           mt: 1.5,
@@ -43,7 +43,7 @@ function PaintingCaption({ painting }: PaintingCaptionProps) {
         </Typography>
         <Typography
           variant="body2"
-          sx={{ color: 'text.secondary', textAlign: 'right' }}
+          sx={{ color: 'text.secondary', textAlign: 'right', lineHeight: '1.5rem' }}
         >
           {meta}
         </Typography>
