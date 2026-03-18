@@ -1,6 +1,5 @@
-import { useCallback } from 'react';
-
 import { Box, Typography } from '@mui/material';
+import { useCallback } from 'react';
 
 import { LayoutA } from './LayoutA';
 import { Lightbox } from './Lightbox';
@@ -20,7 +19,7 @@ export function PaintingsPage() {
     (dir: 1 | -1) => {
       navigate(dir, PAINTINGS.length);
     },
-    [navigate],
+    [navigate]
   );
 
   return (
@@ -34,7 +33,11 @@ export function PaintingsPage() {
       <LayoutA paintings={visible} onPaintingClick={open} />
 
       {visibleCount < PAINTINGS.length && (
-        <Box ref={sentinelRef} sx={{ height: SENTINEL_HEIGHT }} aria-hidden="true" />
+        <Box
+          ref={sentinelRef}
+          sx={{ height: SENTINEL_HEIGHT }}
+          aria-hidden="true"
+        />
       )}
 
       {activeIndex !== null && (

@@ -1,6 +1,5 @@
-import { useCallback, useState } from 'react';
-
 import { Box, Divider, Typography } from '@mui/material';
+import { useCallback, useState } from 'react';
 
 import { type Painting } from './types';
 import { useScrollReveal } from './useScrollReveal';
@@ -37,10 +36,15 @@ function PaintingCaption({ painting }: PaintingCaptionProps) {
           mb: painting.description ? 2 : 3,
         }}
       >
-        <Typography sx={{ fontFamily: FONT_SERIF, fontStyle: 'italic', fontSize: '1rem' }}>
+        <Typography
+          sx={{ fontFamily: FONT_SERIF, fontStyle: 'italic', fontSize: '1rem' }}
+        >
           {painting.title}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'right' }}>
+        <Typography
+          variant="body2"
+          sx={{ color: 'text.secondary', textAlign: 'right' }}
+        >
           {meta}
         </Typography>
       </Box>

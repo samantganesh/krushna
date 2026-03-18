@@ -1,12 +1,11 @@
-import { useCallback, useEffect } from 'react';
-
 import { Box, IconButton, Typography } from '@mui/material';
+import { type MouseEvent, useCallback, useEffect } from 'react';
 
 import { type Painting } from './types';
 
 const LIGHTBOX_Z_INDEX = 1300;
 const FONT_SERIF = '"Georgia", serif';
-const BACKDROP_OPACITY = 0.92;
+const BACKDROP_OPACITY_CSS = 'rgba(0,0,0,0.92)';
 const IMG_MAX_HEIGHT = '82vh';
 const IMG_MAX_WIDTH = '90vw';
 const ARROW_FONT_SIZE = '2rem';
@@ -19,17 +18,10 @@ interface LightboxProps {
   onNavigate: (dir: 1 | -1) => void;
 }
 
-export function Lightbox({ paintings, activeIndex, onClose, onNavigate }: LightboxProps) {
-  const painting = paintings[activeIndex];
-
-  const handleNavigateBack = useCallback(() => {
-    onNavigate(-1);
-  }, [onNavigate]);
-
-  const handleNavigateForward = useCallback(() => {
-    onNavigate(1);
-  }, [onNavigate]);
-
+function useLightboxEffects(
+  onClose: () => void,
+  onNavigate: (dir: 1 | -1) => void
+) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -48,12 +40,91 @@ export function Lightbox({ paintings, activeIndex, onClose, onNavigate }: Lightb
       window.removeEventListener('keydown', handleKey);
     };
   }, [onClose, onNavigate]);
+}
 
-  if (painting === undefined) return null;
+interface CaptionProps {
+  painting: Painting;
+}
 
+function LightboxCaption({ painting }: CaptionProps) {
   const meta = [painting.year, painting.medium, painting.dimensions]
     .filter(Boolean)
     .join(' · ');
+
+  return (
+    <Box
+      sx={{
+        mt: CAPTION_MT,
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        flexWrap: 'wrap',
+        gap: 1,
+      }}
+    >
+      <Typography
+        sx={{ fontFamily: FONT_SERIF, fontStyle: 'italic', color: 'white' }}
+      >
+        {painting.title}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ color: 'rgba(255,255,255,0.7)', textAlign: 'right' }}
+      >
+        {meta}
+      </Typography>
+    </Box>
+  );
+}
+
+interface ImageAreaProps {
+  painting: Painting;
+  onStopPropagation: (e: MouseEvent) => void;
+}
+
+function LightboxImageArea({ painting, onStopPropagation }: ImageAreaProps) {
+  return (
+    <Box
+      onClick={onStopPropagation}
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <Box
+        component="img"
+        src={painting.src}
+        alt={painting.title}
+        sx={{
+          maxHeight: IMG_MAX_HEIGHT,
+          maxWidth: IMG_MAX_WIDTH,
+          objectFit: 'contain',
+          display: 'block',
+        }}
+      />
+      <LightboxCaption painting={painting} />
+    </Box>
+  );
+}
+
+export function Lightbox({
+  paintings,
+  activeIndex,
+  onClose,
+  onNavigate,
+}: LightboxProps) {
+  const painting = paintings[activeIndex];
+
+  const handleNavigateBack = useCallback(() => {
+    onNavigate(-1);
+  }, [onNavigate]);
+  const handleNavigateForward = useCallback(() => {
+    onNavigate(1);
+  }, [onNavigate]);
+  const handleStopPropagation = useCallback((e: MouseEvent) => {
+    e.stopPropagation();
+  }, []);
+
+  useLightboxEffects(onClose, onNavigate);
+
+  if (painting === undefined) return null;
 
   return (
     <Box
@@ -62,71 +133,54 @@ export function Lightbox({ paintings, activeIndex, onClose, onNavigate }: Lightb
         position: 'fixed',
         inset: 0,
         zIndex: LIGHTBOX_Z_INDEX,
-        bgcolor: `rgba(0,0,0,${BACKDROP_OPACITY})`,
+        bgcolor: BACKDROP_OPACITY_CSS,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      {/* Close button */}
       <IconButton
-        onClick={(e) => { e.stopPropagation(); onClose(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
         aria-label="Close lightbox"
         sx={{ position: 'absolute', top: 16, right: 16, color: 'white' }}
       >
         ✕
       </IconButton>
-
-      {/* Prev arrow */}
       <IconButton
-        onClick={(e) => { e.stopPropagation(); handleNavigateBack(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNavigateBack();
+        }}
         aria-label="Previous painting"
-        sx={{ position: 'absolute', left: 16, color: 'white', fontSize: ARROW_FONT_SIZE }}
+        sx={{
+          position: 'absolute',
+          left: 16,
+          color: 'white',
+          fontSize: ARROW_FONT_SIZE,
+        }}
       >
         ‹
       </IconButton>
-
-      {/* Image + caption */}
-      <Box
-        onClick={(e) => { e.stopPropagation(); }}
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-      >
-        <Box
-          component="img"
-          src={painting.src}
-          alt={painting.title}
-          sx={{
-            maxHeight: IMG_MAX_HEIGHT,
-            maxWidth: IMG_MAX_WIDTH,
-            objectFit: 'contain',
-            display: 'block',
-          }}
-        />
-        <Box
-          sx={{
-            mt: CAPTION_MT,
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            flexWrap: 'wrap',
-            gap: 1,
-          }}
-        >
-          <Typography sx={{ fontFamily: FONT_SERIF, fontStyle: 'italic', color: 'white' }}>
-            {painting.title}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)', textAlign: 'right' }}>
-            {meta}
-          </Typography>
-        </Box>
-      </Box>
-
-      {/* Next arrow */}
+      <LightboxImageArea
+        painting={painting}
+        onStopPropagation={handleStopPropagation}
+      />
       <IconButton
-        onClick={(e) => { e.stopPropagation(); handleNavigateForward(); }}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNavigateForward();
+        }}
         aria-label="Next painting"
-        sx={{ position: 'absolute', right: 16, color: 'white', fontSize: ARROW_FONT_SIZE }}
+        sx={{
+          position: 'absolute',
+          right: 16,
+          color: 'white',
+          fontSize: ARROW_FONT_SIZE,
+        }}
       >
         ›
       </IconButton>

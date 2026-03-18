@@ -20,7 +20,7 @@ export function useInfiniteScroll(total: number) {
             observer.disconnect();
           }
         },
-        { threshold: INTERSECTION_THRESHOLD },
+        { threshold: INTERSECTION_THRESHOLD }
       );
       observer.observe(sentinel);
       cleanup = () => {

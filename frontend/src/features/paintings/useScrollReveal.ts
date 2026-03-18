@@ -8,8 +8,6 @@ export function useScrollReveal() {
 
   useEffect(() => {
     const el = ref.current;
-    if (el === null) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -18,10 +16,13 @@ export function useScrollReveal() {
           observer.disconnect();
         }
       },
-      { threshold: INTERSECTION_THRESHOLD },
+      { threshold: INTERSECTION_THRESHOLD }
     );
 
-    observer.observe(el);
+    if (el !== null) {
+      observer.observe(el);
+    }
+
     return () => {
       observer.disconnect();
     };
