@@ -1,7 +1,14 @@
-import { Box, ImageList, ImageListItem, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  ImageList,
+  ImageListItem,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import  { type Artwork } from './types';
+import { type Artwork } from './types';
 
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const FONT_WEIGHT_SEMIBOLD = 600;
@@ -45,7 +52,14 @@ function ArtworkTile({ artwork }: { artwork: Artwork }) {
           p: 2,
         }}
       >
-        <Typography variant="subtitle1" sx={{ color: 'white', fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_SEMIBOLD }}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            color: 'white',
+            fontFamily: FONT_DISPLAY,
+            fontWeight: FONT_WEIGHT_SEMIBOLD,
+          }}
+        >
           {artwork.title}
         </Typography>
         <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.7)' }}>

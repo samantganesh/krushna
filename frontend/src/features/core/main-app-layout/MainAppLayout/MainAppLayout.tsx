@@ -11,7 +11,7 @@ import { LayoutConfigProvider } from './LayoutContext';
 function buildRightContent(
   topbarRightContent: React.ReactNode,
   profileMenuContent: React.ReactNode,
-  showProfileMenu: boolean,
+  showProfileMenu: boolean
 ): React.ReactNode {
   return (
     <>
@@ -88,7 +88,11 @@ const MainAppLayoutInner: React.FC<MainAppLayoutProps> = ({
         <Topbar
           onMenuClick={handleMenuClick}
           logo={logo}
-          rightContent={buildRightContent(topbarRightContent, profileMenuContent, showProfileMenu)}
+          rightContent={buildRightContent(
+            topbarRightContent,
+            profileMenuContent,
+            showProfileMenu
+          )}
         />
       ) : null}
 

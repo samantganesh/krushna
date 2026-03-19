@@ -10,7 +10,14 @@ export function ShortFilm2023() {
     <Box sx={{ px: { xs: 2, md: 8 }, py: 4 }}>
       <BackLink to="/gallery" label="Back to Gallery" />
 
-      <Box sx={{ mt: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 8 }}>
+      <Box
+        sx={{
+          mt: 4,
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: 8,
+        }}
+      >
         <Box sx={{ flex: 2 }}>
           <img
             src="/images/artwork/short-film-2023.jpg"
@@ -20,7 +27,14 @@ export function ShortFilm2023() {
         </Box>
 
         <Box sx={{ flex: 1 }}>
-          <Typography variant="h3" sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_BOLD, mb: 1 }}>
+          <Typography
+            variant="h3"
+            sx={{
+              fontFamily: FONT_DISPLAY,
+              fontWeight: FONT_WEIGHT_BOLD,
+              mb: 1,
+            }}
+          >
             Untitled Short
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 3 }}>

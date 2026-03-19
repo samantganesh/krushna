@@ -3,12 +3,11 @@ import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { useState, type ReactNode } from 'react';
 
 import { NAV_HEIGHT } from '../constants';
-import  { type NavItem } from '../types';
+import { type NavItem } from '../types';
 
 import { MobileMenu } from './MobileMenu';
 import { NavDesktopLinks } from './NavDesktopLinks';
 import { NavLogo } from './NavLogo';
-
 
 interface TopNavProps {
   items: NavItem[];
@@ -29,7 +28,11 @@ function NavRight({ items, rightContent, onMenuOpen }: NavRightProps) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         {rightContent}
-        <IconButton onClick={onMenuOpen} aria-label="Open navigation" sx={{ color: 'text.primary' }}>
+        <IconButton
+          onClick={onMenuOpen}
+          aria-label="Open navigation"
+          sx={{ color: 'text.primary' }}
+        >
           <MenuIcon />
         </IconButton>
       </Box>
@@ -47,8 +50,12 @@ function NavRight({ items, rightContent, onMenuOpen }: NavRightProps) {
 export function TopNav({ items, rightContent }: TopNavProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const openMenu = () => { setMobileOpen(true); };
-  const closeMenu = () => { setMobileOpen(false); };
+  const openMenu = () => {
+    setMobileOpen(true);
+  };
+  const closeMenu = () => {
+    setMobileOpen(false);
+  };
 
   return (
     <>
@@ -71,7 +78,11 @@ export function TopNav({ items, rightContent }: TopNavProps) {
         }}
       >
         <NavLogo />
-        <NavRight items={items} rightContent={rightContent} onMenuOpen={openMenu} />
+        <NavRight
+          items={items}
+          rightContent={rightContent}
+          onMenuOpen={openMenu}
+        />
       </Box>
       <MobileMenu open={mobileOpen} onClose={closeMenu} items={items} />
     </>

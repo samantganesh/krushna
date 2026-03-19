@@ -18,7 +18,12 @@ export function AShortThought2025() {
       <BackLink to="/writing" label="Back to Writing" />
 
       <Box sx={{ mt: 8 }}>
-        <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 2 }}>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          display="block"
+          sx={{ mb: 2 }}
+        >
           Short · 4 September 2025
         </Typography>
         <Typography

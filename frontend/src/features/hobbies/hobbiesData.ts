@@ -1,10 +1,11 @@
-import  { type Hobby } from './types';
+import { type Hobby } from './types';
 
 export const HOBBIES: Hobby[] = [
   {
     id: 'reading',
     name: 'Reading',
-    description: 'Mostly fiction — magical realism, postcolonial lit, anything strange.',
+    description:
+      'Mostly fiction — magical realism, postcolonial lit, anything strange.',
     accent: '#E63022',
   },
   {
