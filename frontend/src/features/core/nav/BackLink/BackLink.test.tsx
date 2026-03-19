@@ -6,7 +6,11 @@ import { BackLink } from './BackLink';
 
 describe('BackLink', () => {
   it('renders the label text', () => {
-    render(<MemoryRouter><BackLink to="/gallery" label="Back to Gallery" /></MemoryRouter>);
+    render(
+      <MemoryRouter>
+        <BackLink to="/gallery" label="Back to Gallery" />
+      </MemoryRouter>
+    );
     expect(screen.getByText('Back to Gallery')).toBeInTheDocument();
   });
 });

@@ -11,12 +11,20 @@ const ITEMS = [
 
 describe('TopNav', () => {
   it('renders the site logo', () => {
-    render(<MemoryRouter><TopNav items={ITEMS} /></MemoryRouter>);
+    render(
+      <MemoryRouter>
+        <TopNav items={ITEMS} />
+      </MemoryRouter>
+    );
     expect(screen.getByText('Krushna')).toBeInTheDocument();
   });
 
   it('renders nav items', () => {
-    render(<MemoryRouter><TopNav items={ITEMS} /></MemoryRouter>);
+    render(
+      <MemoryRouter>
+        <TopNav items={ITEMS} />
+      </MemoryRouter>
+    );
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Gallery')).toBeInTheDocument();
   });

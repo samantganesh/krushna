@@ -1,8 +1,12 @@
 import { Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
-import { FONT_DISPLAY, FONT_WEIGHT_BOLD, FONT_WEIGHT_NORMAL } from '../constants';
-import  { type NavItem } from '../types';
+import {
+  FONT_DISPLAY,
+  FONT_WEIGHT_BOLD,
+  FONT_WEIGHT_NORMAL,
+} from '../constants';
+import { type NavItem } from '../types';
 
 interface NavDesktopLinksProps {
   items: NavItem[];

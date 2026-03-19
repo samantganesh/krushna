@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-import  { type Hobby } from './types';
+import { type Hobby } from './types';
 
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const FONT_WEIGHT_BOLD = 700;
@@ -19,7 +19,10 @@ export function HobbyCard({ hobby }: HobbyCardProps) {
         bgcolor: 'background.paper',
       }}
     >
-      <Typography variant="h5" sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_BOLD, mb: 1 }}>
+      <Typography
+        variant="h5"
+        sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_BOLD, mb: 1 }}
+      >
         {hobby.name}
       </Typography>
       <Typography variant="body1" color="text.secondary">

@@ -1,4 +1,4 @@
-import  { type WritingEntry } from './types';
+import { type WritingEntry } from './types';
 
 export const ENTRIES: WritingEntry[] = [
   {
@@ -23,7 +23,8 @@ export const ENTRIES: WritingEntry[] = [
     title: 'Process Notes — Spring 2024',
     date: '2024-04-20',
     type: 'reflection',
-    excerpt: "Thinking through the studio work from this term: what worked, what didn't, and where next.",
+    excerpt:
+      "Thinking through the studio work from this term: what worked, what didn't, and where next.",
     route: '/writing/process-notes-spring-2024',
   },
 ];

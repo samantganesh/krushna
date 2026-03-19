@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ArtworkGrid } from './ArtworkGrid';
 import { ARTWORKS } from './artworks';
 import { MediumFilter } from './MediumFilter';
-import  { type ArtworkMedium } from './types';
+import { type ArtworkMedium } from './types';
 
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 

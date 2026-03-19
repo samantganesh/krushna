@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 
-const PHOTO_SRC = 'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings/field.jpeg';
+const PHOTO_SRC =
+  'https://res.cloudinary.com/db9fqisro/image/upload/krushna/paintings/field.jpeg';
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const NAV_HEIGHT = '56px';
 

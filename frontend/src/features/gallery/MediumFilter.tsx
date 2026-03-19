@@ -1,8 +1,12 @@
-import { Stack, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import  { type MouseEvent } from 'react';
+import {
+  Stack,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material';
+import { type MouseEvent } from 'react';
 
-import  { type ArtworkMedium } from './types';
-
+import { type ArtworkMedium } from './types';
 
 const FONT_DISPLAY = '"Space Grotesk", sans-serif';
 const FONT_WEIGHT_SEMIBOLD = 600;
@@ -33,7 +37,13 @@ export function MediumFilter({ value, onChange }: MediumFilterProps) {
       <ToggleButtonGroup value={value} exclusive onChange={handleChange}>
         {MEDIUMS.map((m) => (
           <ToggleButton key={m.value} value={m.value} size="small">
-            <Typography variant="caption" sx={{ fontFamily: FONT_DISPLAY, fontWeight: FONT_WEIGHT_SEMIBOLD }}>
+            <Typography
+              variant="caption"
+              sx={{
+                fontFamily: FONT_DISPLAY,
+                fontWeight: FONT_WEIGHT_SEMIBOLD,
+              }}
+            >
               {m.label}
             </Typography>
           </ToggleButton>
